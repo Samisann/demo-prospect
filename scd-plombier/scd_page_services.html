@@ -1,0 +1,237 @@
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial,sans-serif;}
+nav{background:#2c3e2d;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.nav-logo{color:#fff;font-size:16px;font-weight:700;}.nav-logo span{color:#8bc34a;}
+.nav-links{display:flex;gap:20px;}.nav-links a{color:rgba(255,255,255,0.75);font-size:13px;text-decoration:none;}
+.nav-active{color:#8bc34a !important;font-weight:700;}
+.nav-cta{background:#e65100;color:#fff;font-size:13px;padding:7px 14px;border-radius:6px;text-decoration:none;}
+
+.page-hero{background:#2c3e2d;padding:44px 28px;text-align:center;}
+.page-hero h1{color:#fff;font-size:28px;font-weight:700;margin-bottom:10px;}
+.page-hero h1 span{color:#8bc34a;}
+.page-hero p{color:rgba(255,255,255,0.65);font-size:14px;max-width:480px;margin:0 auto;}
+
+.section{padding:48px 28px;background:#f7f5f0;}
+.section-title{font-size:20px;font-weight:700;color:#2c3e2d;margin-bottom:6px;}
+.section-sub{font-size:13px;color:#6d7c6e;margin-bottom:32px;}
+
+.services-full{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+.sf-card{background:#fff;border:1px solid #dde5dd;border-radius:10px;overflow:hidden;}
+.sf-card-header{background:#2c3e2d;padding:20px 22px;display:flex;align-items:center;gap:14px;}
+.sf-card-icon{width:44px;height:44px;background:rgba(139,195,74,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.sf-card-icon svg{width:22px;height:22px;fill:#8bc34a;}
+.sf-card-header h3{color:#fff;font-size:15px;font-weight:700;margin-bottom:3px;}
+.sf-card-header p{color:rgba(255,255,255,0.55);font-size:12px;}
+.sf-card-body{padding:20px 22px;}
+.sf-card-body ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.sf-card-body ul li{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:#3a3a3a;line-height:1.5;}
+.sf-card-body ul li::before{content:'';width:6px;height:6px;background:#8bc34a;border-radius:50%;margin-top:6px;flex-shrink:0;}
+.sf-card-footer{padding:14px 22px;border-top:1px solid #eef4e8;display:flex;justify-content:space-between;align-items:center;}
+.sf-card-footer span{font-size:12px;color:#6d7c6e;}
+.sf-card-footer a{background:#e65100;color:#fff;font-size:12px;padding:6px 14px;border-radius:5px;text-decoration:none;font-weight:700;}
+
+.urgence{background:#eef4e8;padding:44px 28px;}
+.urgence-inner{background:#2c3e2d;border-radius:12px;padding:36px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;}
+.urgence h2{color:#fff;font-size:22px;font-weight:700;margin-bottom:8px;}
+.urgence p{color:rgba(255,255,255,0.65);font-size:14px;max-width:400px;line-height:1.7;}
+.urgence-actions{display:flex;flex-direction:column;gap:10px;align-items:flex-end;}
+.urgence-tel{background:#e65100;color:#fff;font-size:16px;font-weight:700;padding:14px 28px;border-radius:8px;text-decoration:none;text-align:center;}
+.urgence-sub{color:rgba(255,255,255,0.5);font-size:12px;text-align:center;}
+
+.garanties{padding:48px 28px;background:#f7f5f0;}
+.garanties-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;}
+.garantie-card{background:#fff;border:1px solid #dde5dd;border-radius:8px;padding:20px;text-align:center;}
+.garantie-num{font-size:32px;font-weight:700;color:#2c3e2d;margin-bottom:6px;}
+.garantie-label{font-size:12px;color:#6d7c6e;line-height:1.5;}
+
+footer{background:#1e2d1f;padding:18px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+footer p{color:rgba(255,255,255,0.38);font-size:11px;}
+</style>
+
+<nav>
+  <div class="nav-logo">SCD · <span>Plomberie</span></div>
+  <div class="nav-links">
+    <a href="#">Accueil</a>
+    <a href="#" class="nav-active">Services</a>
+    <a href="#">Avis</a>
+    <a href="#">Contact</a>
+  </div>
+  <a href="tel:0686926053" class="nav-cta">06 86 92 60 53</a>
+</nav>
+
+<div class="page-hero">
+  <h1>Nos <span>prestations</span> en plomberie</h1>
+  <p>Du dépannage urgent à la rénovation complète de salle de bain — Sylvain intervient avec précision et soin du détail.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">Toutes nos interventions</div>
+  <div class="section-sub">Bruges et alentours · Devis gratuit · Intervention rapide</div>
+
+  <div class="services-full">
+
+    <div class="sf-card">
+      <div class="sf-card-header">
+        <div class="sf-card-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></div>
+        <div><h3>Dépannage urgent</h3><p>Intervention le jour même</p></div>
+      </div>
+      <div class="sf-card-body">
+        <ul>
+          <li>Fuite d'eau — robinet, tuyauterie, joint</li>
+          <li>Canalisation bouchée ou débordante</li>
+          <li>Chauffe-eau ou ballon en panne</li>
+          <li>WC qui coule ou ne chasse plus</li>
+          <li>Dégât des eaux — recherche de fuite</li>
+        </ul>
+      </div>
+      <div class="sf-card-footer">
+        <span>Réponse rapide garantie</span>
+        <a href="#">Demander un devis</a>
+      </div>
+    </div>
+
+    <div class="sf-card">
+      <div class="sf-card-header">
+        <div class="sf-card-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H7v-2h5v2zm5-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div>
+        <div><h3>Salle de bain & douche</h3><p>Installation & rénovation</p></div>
+      </div>
+      <div class="sf-card-body">
+        <ul>
+          <li>Pose de porte de douche & receveur</li>
+          <li>Installation de baignoire</li>
+          <li>Pose de lavabo, vasque, meuble SDB</li>
+          <li>Remplacement de robinetterie</li>
+          <li>Vérification niveaux & étanchéité</li>
+        </ul>
+      </div>
+      <div class="sf-card-footer">
+        <span>Chantier propre garanti</span>
+        <a href="#">Demander un devis</a>
+      </div>
+    </div>
+
+    <div class="sf-card">
+      <div class="sf-card-header">
+        <div class="sf-card-icon"><svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg></div>
+        <div><h3>Chauffage & radiateurs</h3><p>Entretien & remplacement</p></div>
+      </div>
+      <div class="sf-card-body">
+        <ul>
+          <li>Purge et équilibrage des radiateurs</li>
+          <li>Remplacement de vannes thermostatiques</li>
+          <li>Entretien chaudière & ballon d'eau chaude</li>
+          <li>Pose de radiateurs à inertie</li>
+          <li>Diagnostic panne de chauffage</li>
+        </ul>
+      </div>
+      <div class="sf-card-footer">
+        <span>Tarifs transparents</span>
+        <a href="#">Demander un devis</a>
+      </div>
+    </div>
+
+    <div class="sf-card">
+      <div class="sf-card-header">
+        <div class="sf-card-icon"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div>
+        <div><h3>Gestion locative</h3><p>Propriétaires & bailleurs</p></div>
+      </div>
+      <div class="sf-card-body">
+        <ul>
+          <li>Intervention directe chez vos locataires</li>
+          <li>Prise de RDV simplifiée & flexible</li>
+          <li>Compte-rendu d'intervention rapide</li>
+          <li>Devis et facturation clairs</li>
+          <li>Disponible sur appel professionnel</li>
+        </ul>
+      </div>
+      <div class="sf-card-footer">
+        <span>Idéal pour les propriétaires</span>
+        <a href="#">Demander un devis</a>
+      </div>
+    </div>
+
+    <div class="sf-card">
+      <div class="sf-card-header">
+        <div class="sf-card-icon"><svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg></div>
+        <div><h3>Tuyauterie & installation</h3><p>Neuf & rénovation</p></div>
+      </div>
+      <div class="sf-card-body">
+        <ul>
+          <li>Remplacement de tuyaux vétustes</li>
+          <li>Installation alimentation en eau</li>
+          <li>Raccordement électroménager (lave-linge…)</li>
+          <li>Mise aux normes plomberie</li>
+          <li>Création de point d'eau</li>
+        </ul>
+      </div>
+      <div class="sf-card-footer">
+        <span>Travail soigné & garanti</span>
+        <a href="#">Demander un devis</a>
+      </div>
+    </div>
+
+    <div class="sf-card">
+      <div class="sf-card-header">
+        <div class="sf-card-icon"><svg viewBox="0 0 24 24"><path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg></div>
+        <div><h3>Entretien préventif</h3><p>Évitez les mauvaises surprises</p></div>
+      </div>
+      <div class="sf-card-body">
+        <ul>
+          <li>Vérification annuelle de l'installation</li>
+          <li>Détartrage robinetterie & pomme de douche</li>
+          <li>Contrôle pression eau</li>
+          <li>Inspection visuelle canalisations</li>
+          <li>Conseils & recommandations personnalisés</li>
+        </ul>
+      </div>
+      <div class="sf-card-footer">
+        <span>Prévenir plutôt que guérir</span>
+        <a href="#">Demander un devis</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="urgence">
+  <div class="urgence-inner">
+    <div>
+      <h2>Une urgence plomberie ?</h2>
+      <p>Sylvain intervient rapidement sur Bruges et les communes alentours. Appelez directement pour une prise en charge le jour même.</p>
+    </div>
+    <div class="urgence-actions">
+      <a href="tel:0686926053" class="urgence-tel">06 86 92 60 53</a>
+      <span class="urgence-sub">Lun – Ven · jusqu'à 17h00</span>
+    </div>
+  </div>
+</div>
+
+<div class="garanties">
+  <div class="section-title" style="margin-bottom:6px;">Pourquoi choisir SCD ?</div>
+  <div class="section-sub">Ce que nos clients apprécient</div>
+  <div class="garanties-grid">
+    <div class="garantie-card">
+      <div class="garantie-num">5★</div>
+      <div class="garantie-label">14 avis Google<br>tous 5 étoiles</div>
+    </div>
+    <div class="garantie-card">
+      <div class="garantie-num">J+1</div>
+      <div class="garantie-label">Intervention possible<br>le lendemain</div>
+    </div>
+    <div class="garantie-card">
+      <div class="garantie-num">100%</div>
+      <div class="garantie-label">Devis gratuit<br>sans engagement</div>
+    </div>
+    <div class="garantie-card">
+      <div class="garantie-num">Pro</div>
+      <div class="garantie-label">Artisan qualifié<br>travail garanti</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 SCD · Plomberie · Bruges et alentours</p>
+  <p>Site réalisé par Sami · Développeur web freelance</p>
+</footer>
