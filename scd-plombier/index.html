@@ -1,0 +1,202 @@
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+.site{width:100%;background:#f7f5f0;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden;font-family:var(--font-sans);}
+.demo-banner{background:#fff8e1;border-bottom:1px solid #ffe082;padding:8px 28px;display:flex;align-items:center;gap:8px;}
+.demo-banner span{font-size:12px;color:#7a5c00;}
+.nav{background:#2c3e2d;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;}
+.nav-logo{color:#fff;font-size:16px;font-weight:500;}.nav-logo span{color:#8bc34a;}
+.nav-links{display:flex;gap:20px;}
+.nav-links a{color:rgba(255,255,255,0.75);font-size:13px;text-decoration:none;}
+.nav-cta{background:#e65100;color:#fff;font-size:13px;padding:7px 14px;border-radius:6px;text-decoration:none;}
+.hero{background:#2c3e2d;padding:52px 28px;display:flex;justify-content:space-between;align-items:center;gap:24px;}
+.hero-text h1{color:#fff;font-size:26px;font-weight:500;line-height:1.3;margin-bottom:10px;}
+.hero-text h1 span{color:#8bc34a;}
+.hero-text p{color:rgba(255,255,255,0.68);font-size:14px;line-height:1.7;max-width:360px;margin-bottom:22px;}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap;}
+.btn-p{background:#e65100;color:#fff;padding:11px 20px;border-radius:6px;font-size:13px;text-decoration:none;font-weight:500;}
+.btn-s{background:transparent;color:#fff;padding:10px 20px;border-radius:6px;font-size:13px;text-decoration:none;border:1px solid rgba(255,255,255,0.35);}
+.hero-badge{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:22px 28px;text-align:center;flex-shrink:0;}
+.hero-badge .stars{color:#f5c842;font-size:17px;margin-bottom:6px;}
+.hero-badge .score{color:#fff;font-size:30px;font-weight:500;}
+.hero-badge .label{color:rgba(255,255,255,0.5);font-size:11px;margin-top:4px;}
+.section{padding:44px 28px;background:#f7f5f0;}
+.section-title{font-size:20px;font-weight:500;color:#2c3e2d;margin-bottom:6px;}
+.section-sub{font-size:13px;color:#6d7c6e;margin-bottom:28px;}
+.services-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
+.scard{background:#fff;border:0.5px solid #dde5dd;border-radius:var(--border-radius-md);padding:18px;}
+.scard-icon{width:38px;height:38px;background:#eef4e8;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
+.scard-icon svg{width:18px;height:18px;fill:#2c3e2d;}
+.scard h3{font-size:13px;font-weight:500;color:#2c3e2d;margin-bottom:5px;}
+.scard p{font-size:12px;color:#6d7c6e;line-height:1.6;}
+.avantages{background:#eef4e8;padding:36px 28px;}
+.av-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;}
+.av{text-align:center;}
+.av .num{font-size:24px;font-weight:500;color:#2c3e2d;margin-bottom:4px;}
+.av .txt{font-size:12px;color:#6d7c6e;}
+.divider{height:0.5px;background:#dde5dd;}
+.avis-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
+.acard{background:#fff;border:0.5px solid #dde5dd;border-radius:var(--border-radius-md);padding:14px;}
+.acard .stars{color:#f5c842;font-size:13px;margin-bottom:7px;}
+.acard .txt{font-size:12px;color:#3a3a3a;line-height:1.6;margin-bottom:8px;}
+.acard .author{font-size:11px;color:#6d7c6e;font-weight:500;}
+.contact{background:#2c3e2d;padding:44px 28px;}
+.contact-title{color:#fff;font-size:20px;font-weight:500;margin-bottom:6px;}
+.contact-sub{color:rgba(255,255,255,0.55);font-size:13px;margin-bottom:28px;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;}
+.contact-left{display:flex;flex-direction:column;gap:18px;}
+.cinfos{display:flex;flex-direction:column;gap:12px;}
+.citem{display:flex;align-items:center;gap:10px;}
+.cicon{width:34px;height:34px;background:rgba(255,255,255,0.09);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cicon svg{width:15px;height:15px;fill:#8bc34a;}
+.clabel{color:rgba(255,255,255,0.42);font-size:11px;margin-bottom:2px;}
+.ctext{color:rgba(255,255,255,0.85);font-size:13px;}
+#map2{height:190px;border-radius:10px;border:1px solid rgba(255,255,255,0.14);overflow:hidden;}
+.map-btn{display:flex;align-items:center;justify-content:center;gap:7px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.18);border-radius:6px;padding:9px;color:rgba(255,255,255,0.75);font-size:12px;text-decoration:none;margin-top:8px;}
+.map-btn svg{width:13px;height:13px;fill:#8bc34a;}
+.cform{display:flex;flex-direction:column;gap:10px;}
+.cform input,.cform textarea{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);border-radius:6px;padding:9px 13px;color:#fff;font-size:13px;font-family:var(--font-sans);}
+.cform textarea{height:85px;resize:none;}
+.cform button{background:#e65100;color:#fff;border:none;padding:11px;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer;}
+.footer{background:#1e2d1f;padding:18px 28px;display:flex;justify-content:space-between;align-items:center;}
+.footer p{color:rgba(255,255,255,0.38);font-size:11px;}
+</style>
+
+<div class="site">
+  <div class="demo-banner">
+    <svg width="13" height="13" viewBox="0 0 16 16" fill="#7a5c00"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-.5 3h1.5v5H7.5V6z"/></svg>
+    <span><strong>Démo gratuite</strong> — Site réalisé pour SCD · Plombier · Sans engagement</span>
+  </div>
+
+  <nav class="nav">
+    <div class="nav-logo">SCD · <span>Plomberie</span></div>
+    <div class="nav-links">
+      <a href="#">Services</a>
+      <a href="#">Avis</a>
+      <a href="#">Contact</a>
+    </div>
+    <a href="#" class="nav-cta">Appeler maintenant</a>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Plombier <span>réactif & soigné</span><br>à votre service</h1>
+      <p>Installation, dépannage, rénovation salle de bain. Sylvain intervient rapidement avec un vrai souci du détail. Devis gratuit.</p>
+      <div class="hero-btns">
+        <a href="#" class="btn-p">Demander un devis gratuit</a>
+        <a href="#" class="btn-s">06 86 92 60 53</a>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <div class="stars">★★★★★</div>
+      <div class="score">5,0 / 5</div>
+      <div class="label">14 avis Google vérifiés</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Mes prestations</div>
+    <div class="section-sub">Intervention rapide, chantier propre, travail garanti</div>
+    <div class="services-grid">
+      <div class="scard">
+        <div class="scard-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></div>
+        <h3>Dépannage urgent</h3>
+        <p>Fuite, canalisation bouchée, ballon d'eau chaude. Réponse rapide, intervention le jour même.</p>
+      </div>
+      <div class="scard">
+        <div class="scard-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H7v-2h5v2zm5-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div>
+        <h3>Salle de bain & douche</h3>
+        <p>Pose de porte de douche, baignoire, receveur. Étanchéité et niveaux parfaits garantis.</p>
+      </div>
+      <div class="scard">
+        <div class="scard-icon"><svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg></div>
+        <h3>Gestion locative</h3>
+        <p>Intervention rapide chez vos locataires, prise de RDV simplifiée pour les propriétaires.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="avantages">
+    <div class="av-grid">
+      <div class="av"><div class="num">5★</div><div class="txt">14 avis Google</div></div>
+      <div class="av"><div class="num">Réactif</div><div class="txt">Intervention rapide</div></div>
+      <div class="av"><div class="num">Soigné</div><div class="txt">Chantier propre garanti</div></div>
+      <div class="av"><div class="num">Devis</div><div class="txt">Gratuit & sans engagement</div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-title">Ce que disent mes clients</div>
+    <div class="section-sub">14 avis Google · Note moyenne 5,0/5</div>
+    <div class="avis-grid">
+      <div class="acard">
+        <div class="stars">★★★★★</div>
+        <div class="txt">Intervention rapide et efficace chez mon locataire. Prise de RDV simple, chantier impeccable. Je recommande !</div>
+        <div class="author">Mauget Eva · il y a 1 mois</div>
+      </div>
+      <div class="acard">
+        <div class="stars">★★★★★</div>
+        <div class="txt">Installation de porte de douche précise et soignée. Vrai souci du détail, niveaux parfaits, chantier propre.</div>
+        <div class="author">Alexis Moricet · il y a 1 mois</div>
+      </div>
+      <div class="acard">
+        <div class="stars">★★★★★</div>
+        <div class="txt">Très disponible et à l'écoute. Un réel savoir-faire et une analyse soignée des projets. Je recommande sans hésiter !</div>
+        <div class="author">Tiphaine Boulle · il y a 1 mois</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact">
+    <div class="contact-title">Prendre contact</div>
+    <div class="contact-sub">Devis gratuit — Réponse rapide</div>
+    <div class="contact-grid">
+      <div class="contact-left">
+        <div class="cinfos">
+          <div class="citem">
+            <div class="cicon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+            <div><div class="clabel">Téléphone</div><div class="ctext">06 86 92 60 53</div></div>
+          </div>
+          <div class="citem">
+            <div class="cicon"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg></div>
+            <div><div class="clabel">Horaires</div><div class="ctext">Lun – Ven · jusqu'à 17h00</div></div>
+          </div>
+        </div>
+        <div>
+          <div id="map2"></div>
+          <a href="https://www.google.com/maps/search/SCD+Plombier+Bruges+33520" target="_blank" class="map-btn">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Ouvrir dans Google Maps
+          </a>
+        </div>
+      </div>
+      <div class="cform">
+        <input type="text" placeholder="Votre nom" />
+        <input type="text" placeholder="Votre téléphone" />
+        <textarea placeholder="Décrivez votre problème de plomberie..."></textarea>
+        <button>Envoyer ma demande</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>© 2026 SCD · Plomberie · Bruges et alentours</p>
+    <p>Site réalisé par Sami · Développeur web freelance</p>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const map2 = L.map('map2',{zoomControl:true,scrollWheelZoom:false}).setView([44.8800,-0.5930],14);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap',maxZoom:19}).addTo(map2);
+const icon2 = L.divIcon({
+  html:'<div style="background:#e65100;width:14px;height:14px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 5px rgba(0,0,0,0.35);"></div>',
+  iconSize:[14,14],iconAnchor:[7,7],className:''
+});
+L.marker([44.8800,-0.5930],{icon2}).addTo(map2).bindPopup('<strong>SCD · Plomberie</strong><br>Bruges 33520').openPopup();
+</script>
